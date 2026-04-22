@@ -1,0 +1,36 @@
+{
+  "_comment": "Fill one of `orcid` OR `openalex_author_id` (orcid preferred). Edit `selected` to pick papers and order; match papers by DOI (preferred), openalex id, or arxiv id. Use `overrides` to add project-page / code / slides links to any paper.",
+
+  "orcid": "",
+  "openalex_author_id": "",
+
+  "selected": [
+    {"doi": "10.1038/s41586-025-08829-y"},
+    {"doi": "10.7554/eLife.89996"},
+    {"doi": "10.1038/nature21394"},
+    {"doi": "10.1038/nature16468"},
+    {"doi": "10.1126/science.abc2294"},
+    {"doi": "10.1038/s41467-020-17113-8"}
+  ],
+
+  "overrides": {
+    "10.1038/s41586-025-08829-y": {
+      "project_page": "",
+      "code": ""
+    }
+  },
+
+  "extras": [
+    {
+      "_comment": "Manual items here if OpenAlex misses something (preprints sometimes). Match schema of data/publications.json.works entries.",
+      "doi": null,
+      "title": "",
+      "year": 0,
+      "authors": [],
+      "venue": "",
+      "url": ""
+    }
+  ],
+
+  "exclude_dois": []
+}
