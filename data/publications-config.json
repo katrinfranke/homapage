@@ -2,7 +2,7 @@
   "_comment": "Fill one of `orcid` OR `openalex_author_id` (orcid preferred). Edit `selected` to pick papers and order; match papers by DOI (preferred), openalex id, or arxiv id. Use `overrides` to add project-page / code / slides links to any paper.",
 
   "orcid": "",
-  "openalex_author_id": "",
+  "openalex_author_id": "A5010647635",
 
   "selected": [
     {"doi": "10.1038/s41586-025-08829-y"},
