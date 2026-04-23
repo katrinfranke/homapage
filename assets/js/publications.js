@@ -85,13 +85,47 @@
     );
   }
 
+  function normalizeExtra(e) {
+    const doi = (e.doi || "").replace(/^https?:\/\/doi\.org\//i, "") || null;
+    return {
+      id: null,
+      doi: doi,
+      title: e.title,
+      year: e.year || null,
+      date: e.date || (e.year ? `${e.year}-12-31` : null),
+      authors: e.authors || [],
+      venue: e.venue || null,
+      url: e.url || (doi ? `https://doi.org/${doi}` : null),
+      type: e.type || "article",
+      manual: true,
+    };
+  }
+
   function render(pubs, cfg) {
-    const works = (pubs && pubs.works) || [];
+    const openalexWorks = (pubs && pubs.works) || [];
     const overrides = (cfg && cfg.overrides) || {};
     const selected = (cfg && cfg.selected) || [];
     const excludeDois = new Set(
       ((cfg && cfg.exclude_dois) || []).map(normalizeDoi).filter(Boolean)
     );
+    const extras = ((cfg && cfg.extras) || [])
+      .filter((e) => e && e.title)
+      .map(normalizeExtra);
+
+    // Merge extras with OpenAlex works; extras win on DOI collisions
+    const seenDoi = new Set();
+    const works = [];
+    for (const w of [...extras, ...openalexWorks]) {
+      const d = normalizeDoi(w.doi);
+      if (d && seenDoi.has(d)) continue;
+      if (d) seenDoi.add(d);
+      works.push(w);
+    }
+    works.sort((a, b) => {
+      const da = a.date || `${a.year || 0}-00-00`;
+      const db = b.date || `${b.year || 0}-00-00`;
+      return db.localeCompare(da);
+    });
 
     // Index by DOI and by openalex id for lookups
     const byDoi = new Map();

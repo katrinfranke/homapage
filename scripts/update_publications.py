@@ -125,24 +125,11 @@ def main() -> int:
             seen_doi.add(doi)
         works.append(c)
 
-    # Merge in manual extras (for things OpenAlex misses)
-    for ex in cfg.get("extras") or []:
-        if not ex or not ex.get("title"):
-            continue
-        works.append({
-            "id": None,
-            "doi": (ex.get("doi") or "").replace("https://doi.org/", "") or None,
-            "title": ex.get("title"),
-            "year": ex.get("year"),
-            "date": ex.get("date") or (f"{ex.get('year')}-01-01" if ex.get("year") else None),
-            "authors": ex.get("authors") or [],
-            "venue": ex.get("venue"),
-            "url": ex.get("url"),
-            "type": ex.get("type") or "article",
-            "manual": True,
-        })
-
     works.sort(key=lambda x: (x.get("date") or f"{x.get('year') or 0}-00-00"), reverse=True)
+    # Note: extras, selected, overrides and exclude_dois from the config are
+    # applied client-side by assets/js/publications.js at render time, so
+    # changes to the config take effect immediately without re-running the
+    # workflow. This script only mirrors what OpenAlex knows.
 
     out = {
         "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
