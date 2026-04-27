@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-04-22T23:55:05Z",
+  "generated_at": "2026-04-27T09:21:53Z",
   "source": "openalex",
   "filter": "authorships.author.id:A5010647635",
-  "count": 104,
+  "count": 103,
   "works": [
     {
       "id": "W4417170708",
@@ -30,37 +30,6 @@
       "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
       "url": "https://doi.org/10.64898/2025.12.04.691221",
       "type": "article"
-    },
-    {
-      "id": "W4412524137",
-      "doi": "10.1101/2025.07.16.665209",
-      "title": "Dual-feature selectivity enables bidirectional coding in visual cortical neurons",
-      "year": 2025,
-      "date": "2025-07-21",
-      "authors": [
-        "Nikos Karantzas",
-        "Katrin Franke",
-        "Konstantin F. Willeke",
-        "Maria Diamantaki",
-        "Kandan Ramakrishnan",
-        "Hasan Atakan Bedel",
-        "Pavithra Elumalai",
-        "Kelli Restivo",
-        "Paul G. Fahey",
-        "Cate Nealley",
-        "Tori Shinn",
-        "Gabrielle Garcia",
-        "Saumil S. Patel",
-        "Alexander S. Ecker",
-        "Edgar Y. Walker",
-        "Emmanouil Froudarakis",
-        "Sophia Sanborn",
-        "Fabian H. Sinz",
-        "Andreas S. Tolias"
-      ],
-      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
-      "url": "https://doi.org/10.1101/2025.07.16.665209",
-      "type": "preprint"
     },
     {
       "id": "W4416134213",
