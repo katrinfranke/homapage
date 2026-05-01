@@ -1,8 +1,7 @@
 {
-  "_comment": "Fill one of `orcid` OR `openalex_author_id` (orcid preferred). Edit `selected` to pick papers and order; match papers by DOI (preferred), openalex id, or arxiv id. Use `overrides` to add project-page / code / slides links to any paper. `extras` are papers OpenAlex hasn't indexed yet; add them here and they render alongside the OpenAlex list. `exclude_dois` hides specific papers (e.g. a preprint superseded by a published version). Changes here take effect on next page load; no workflow re-run needed.",
+  "_comment": "Set `orcid` to your ORCID iD. The weekly workflow pulls works from your ORCID record and enriches each DOI from Crossref; nothing else needs to be authored here. Edit `selected` to pick papers and order; match papers by DOI. Use `overrides` to add project-page / code / slides links to any paper. `extras` are papers ORCID/Crossref don't have yet; add them here and they render alongside the auto-fetched list. `exclude_dois` hides specific papers (e.g. a preprint superseded by a published version). Changes to `selected`, `overrides`, `extras`, and `exclude_dois` take effect on next page load; no workflow re-run needed.",
 
-  "orcid": "",
-  "openalex_author_id": "A5010647635",
+  "orcid": "0000-0002-8649-4835",
 
   "selected": [
     {"doi": "10.1016/j.neuron.2026.02.022"},
@@ -17,46 +16,7 @@
     }
   },
 
-  "extras": [
-    {
-      "doi": "10.1016/j.neuron.2026.02.022",
-      "title": "Statistics of natural scenes shape contextual modulation in the visual cortex",
-      "year": 2026,
-      "date": "2026-04-01",
-      "authors": ["Fu, J.", "et al.", "Franke, K."],
-      "venue": "Neuron",
-      "url": "https://www.cell.com/neuron/fulltext/S0896-6273(26)00121-2"
-    },
-    {
-      "doi": "10.7554/eLife.109861.1",
-      "title": "Dual-feature selectivity enables bidirectional coding in visual cortical neurons",
-      "year": 2026,
-      "date": "2026-01-01",
-      "authors": [
-        "Karantzas, N.",
-        "Franke, K.",
-        "Willeke, K. F.",
-        "Diamantaki, M.",
-        "Ramakrishnan, K.",
-        "Bedel, H. A.",
-        "Elumalai, P.",
-        "Restivo, K.",
-        "Fahey, P. G.",
-        "Nealley, C.",
-        "Shinn, T.",
-        "Garcia, G.",
-        "Patel, S. S.",
-        "Ecker, A. S.",
-        "Walker, E. Y.",
-        "Froudarakis, E.",
-        "Sanborn, S.",
-        "Sinz, F. H.",
-        "Tolias, A. S."
-      ],
-      "venue": "eLife",
-      "url": "https://doi.org/10.7554/eLife.109861.1"
-    }
-  ],
+  "extras": [],
 
   "exclude_dois": [
     "10.1101/2025.07.16.665209"

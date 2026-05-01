@@ -26,6 +26,10 @@
     return (d || "").replace(/^https?:\/\/doi\.org\//i, "").toLowerCase();
   }
 
+  function normalizeTitle(t) {
+    return (t || "").toLowerCase().replace(/\s+/g, " ").trim();
+  }
+
   function escape(s) {
     return String(s == null ? "" : s)
       .replace(/&/g, "&amp;")
@@ -112,13 +116,17 @@
       .filter((e) => e && e.title)
       .map(normalizeExtra);
 
-    // Merge extras with OpenAlex works; extras win on DOI collisions
+    // Merge extras with auto-fetched works; extras win on DOI/title collisions
     const seenDoi = new Set();
+    const seenTitle = new Set();
     const works = [];
     for (const w of [...extras, ...openalexWorks]) {
       const d = normalizeDoi(w.doi);
+      const t = normalizeTitle(w.title);
       if (d && seenDoi.has(d)) continue;
+      if (!d && t && seenTitle.has(t)) continue;
       if (d) seenDoi.add(d);
+      if (t) seenTitle.add(t);
       works.push(w);
     }
     works.sort((a, b) => {
@@ -195,12 +203,13 @@
     }
 
     if (metaEl) {
+      const sourceLabel = (pubs.source || "ORCID").toUpperCase().includes("ORCID") ? "ORCID" : pubs.source || "ORCID";
       if (pubs.generated_at) {
         const d = new Date(pubs.generated_at);
         const stamp = d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
-        metaEl.textContent = `Auto-updated from OpenAlex on ${stamp} · ${pubs.count ?? filtered.length} works.`;
+        metaEl.textContent = `Auto-updated from ${sourceLabel} on ${stamp} · ${pubs.count ?? filtered.length} works.`;
       } else {
-        metaEl.textContent = "Awaiting first OpenAlex sync.";
+        metaEl.textContent = `Awaiting first ${sourceLabel} sync.`;
       }
     }
   }
